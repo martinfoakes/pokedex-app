@@ -12,7 +12,7 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <CardContainer>
       <PokemonName>
-        <p>{pokemon.name}</p>
+        <p>{`#${pokemon.number}: ${pokemon.name}`}</p>
       </PokemonName>
       <PokemonMeta>
         <span>{`Max HP: ${pokemon.maxHP}`}</span>
