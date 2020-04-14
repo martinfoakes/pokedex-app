@@ -1,12 +1,17 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 
-import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import { GET_ALL_POKEMON } from "../../graphql/pokemon-queries";
+import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import { LoadingSpinner } from "../../components/LoadingSpinner/LoadingSpinner";
-import { AllContainer } from "./styles/styles";
+import {
+  AllContainer,
+  FilterFormLabel,
+  FilterFormInput,
+  FilterFormButton,
+} from "./styles/styles";
 
-const AllPokemonContainer = ({ numToShow }) => {
+const AllPokemonContainer = ({ numToShow, submitFunc, resetFunc }) => {
   const { data: { pokemons = [] } = {}, loading, error } = useQuery(
     GET_ALL_POKEMON,
     {
@@ -16,13 +21,36 @@ const AllPokemonContainer = ({ numToShow }) => {
 
   if (loading) return <LoadingSpinner />;
 
+  if (error) return "Oopsie woopsie";
+
   return (
-    <AllContainer>
-      {pokemons &&
-        pokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} />
-        ))}
-    </AllContainer>
+    <>
+      <h2>{"View all Generation I Pokémon"}</h2>
+      <form onSubmit={submitFunc} className="number-input" id="number-filter">
+        <FilterFormLabel for="input-num">
+          {"Number of Pokémon to show: "}
+        </FilterFormLabel>
+        <FilterFormInput
+          type="number"
+          name="input-number"
+          id="input-num"
+          min="1"
+          max="151"
+        />
+        <FilterFormButton form="number-filter" type="submit" value="Submit">
+          {"Submit"}
+        </FilterFormButton>
+        <FilterFormButton type="reset" onClick={resetFunc}>
+          {"Reset"}
+        </FilterFormButton>
+      </form>
+      <AllContainer>
+        {pokemons &&
+          pokemons.map((pokemonObj) => (
+            <PokemonCard key={pokemonObj.id} pokemon={pokemonObj} />
+          ))}
+      </AllContainer>
+    </>
   );
 };
 

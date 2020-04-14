@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Montserrat&display=swap');
 
 /* RESETS 
 ==================================================
@@ -16,10 +16,10 @@ html {
 }
 
 body {
-  margin: 20px 0;
+  margin: 0 1rem;
   padding: 0 20px;
   line-height: 1;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #202020;
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
@@ -27,41 +27,13 @@ body {
 }
 
 main {
-  margin: 0 1rem;
+  margin-top: 3rem;
 }
 
-form label {
-  font-weight: 400;
-  font-size: 18px;
-}
-
-#in-num {
-  width: 6rem;
-  margin-right: 1rem;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-#num-select-button {
-  padding: 5px 15px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #FFFFFF;
-  background-color: #7bb7b7;
-  text-align: center;
-  transition: all 0.2s;
-}
-
-#num-select-button:hover {
-  background-color: #538b9b;
-  cursor: pointer;
-}
-
-#num-select-button:focus {
-  outline: none;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Comfortaa", sans-serif;
+  color: #343b40;
 }
